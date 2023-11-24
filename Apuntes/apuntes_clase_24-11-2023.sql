@@ -1,0 +1,54 @@
+SELECT *, CONCAT (first_name, last_name)
+FROM actors;
+
+SELECT title, REPLACE(title, "Harry", "Seba") FROM movies
+WHERE title LIKE "Harry%";
+
+SELECT COUNT(title) FROM movies;
+SELECT title FROM movies
+WHERE LENGTH(title)>20;
+
+SELECT PI();
+
+SELECT RAND();
+
+SELECT ROUND(RAND()*(10-5)+5,2)AS RANDOM_REDONDEADO;
+SELECT TRUNCATE(RAND()*(10-5)+5,2) AS RANDOM_TRUNCADO;
+
+SELECT NOW() AS FECHA_HORA_ACTUAL;
+SELECT DAY(NOW()) AS DIA_ACTUAL;
+SELECT MONTH(NOW()) AS MES_ACTUAL;
+SELECT YEAR(NOW()) AS AÑO_ACTUAL;
+SELECT SECOND(NOW()) AS SEGUNDO_ACTUAL;
+SELECT SECOND(NOW()) AS SEGUNDO_ACTUAL;
+#MOSTRAR HORAS DEL DIA TRANSCURRIDAS
+SELECT EXTRACT(DAY_HOUR FROM NOW()) AS HORAS_DEL_DIA;
+#DIFERENCIA ENTRE FECHA DE SALIDA Y HOY
+SELECT end_date, release_date, DATEDIFF(end_date, release_date)  FROM series;
+#DIFERENCIA ENTRE FECHA DE SALIDA Y HOY EN AÑOS
+SELECT end_date, release_date, ROUND(DATEDIFF(NOW() , end_date),365)  FROM series;
+
+SELECT DATE_ADD(NOW(), INTERVAL 1 YEAR);
+SELECT DATE_ADD(NOW(), INTERVAL 1 MONTH);
+ # DATE_SUB(NOW(), );
+ #FORMATEAR FORMATO DE FECHA
+ SET lc_time_names ='es_ES';
+ SELECT title, DATE_FORMAT(release_date, "%d/%M/%Y") AS fecha_salida FROM movies;
+
+#Cambiar null por valor predeterminado
+SELECT *, COALESCE(length, 0) Dato_cambiado FROM movies;
+
+#CONDICIONAL
+SELECT title, awards, IF(awards >10,"Muy premiado", "Muy malo") valoracion FROM movies;
+#CONDICIONAL ANIDADO
+SELECT title, rating, 
+CASE
+  WHEN rating<4 THEN "MUY MALA"
+  WHEN rating BETWEEN 4 and 6 THEN "Regular"
+  WHEN rating BETWEEN 7 and 10 THEN "SAFA"
+  ELSE  "ESTA BUENISIMA"
+ END  AS VALORACION FROM movies;
+ 
+
+ 
+ 
